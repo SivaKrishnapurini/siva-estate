@@ -1,0 +1,9 @@
+@media screen and (min-width:768px) {
+    .search_bar{
+    margin-left: 150px !important;
+}
+}
+
+body{
+    background-color: #ebf7f4;
+}
