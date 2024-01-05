@@ -5,6 +5,7 @@ dotenv.config()
 const Router = require('./routes/auth.routes.js')
 const cookieParser = require('cookie-parser');
 const Listing = require('./routes/listing.route.js')
+const path = require('path')
 
 mongodb.connect(process.env.MONGO_DB_URL)
     .then(() => {
@@ -14,15 +15,24 @@ mongodb.connect(process.env.MONGO_DB_URL)
         console.log(error.message)
     })
 
+// const __dirname = path.resolve()
+
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
 
+app.listen(4000, () => {
+    console.log('successfully server running')
+})
+
+
 app.use('/auth/user', Router)
 app.use('/listing/datas', Listing)
 
-app.listen(4000, () => {
-    console.log('successfully server running')
+app.use(express.static(path.join(__dirname, '/client/dist')))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
 })
 
 app.use((err, req, res, next) => {
