@@ -132,7 +132,7 @@ const loadMoreData = async() =>{
 
     return(
         <div className="flex flex-col md:flex-row items-center md:items-start">
-            <div className="p-7 border-b-2 md:border-r-2 md:h-screen md:w-[450px] w-[500px]">
+            <div className="p-7 border-b-2 md:border-r-2 md:h-screen md:w-[450px] w-[380px]">
                 <form className="flex flex-col gap-3" onSubmit={onSearchHandle}>
                     <div className="flex items-center gap-3">
                         <label className="whitespace-nowrap font-semibold">Search Term:</label>
@@ -182,12 +182,12 @@ const loadMoreData = async() =>{
                         <button type="sumbit"  className="bg-slate-600 p-2 rounded-md font-semibold text-center text-slate-100">Search</button> 
                 </form>
             </div>
-            <div className="md:w-[850px] w-[500px] p-3 md:p-0">
+            <div className="md:w-[850px] w-[400px] p-3 md:p-0">
                 <h1 className="font-semibold text-2xl mt-4 text-slate-500">Listing Results Data:</h1>
                 <div className="md:h-96 flex flex-col items-center justify-center hidden">
                     <img src="https://i.stack.imgur.com/IA7jp.gif" alt="loading gif" className="h-28 w-28 rounded-full"/>
                 </div>
-                <div className="flex gap-4 m-2 flex-wrap rounded-md overflow-y-auto h-[500px]">
+                <div className="flex gap-4 m-2 flex-wrap rounded-md overflow-y-auto h-[500px] w-[340px] xl:w-[850px] md:w-[550px] flex-row justify-center">
                     {loading ? (<div className="md:h-80 flex flex-col items-center justify-center w-[430px] lg:w-screen">
                         <img src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1265.gif" alt="load gif" className="h-32 w-32" />
                     </div>) : (serachFetchData && serachFetchData.length > 0 ? serachFetchData.map((searchData, index) => (
@@ -205,9 +205,11 @@ const loadMoreData = async() =>{
                                           <div>
                                               <span className="font-semibold text-md text-slate-800">Cost : <span className="text-sm text-slate-500"> $ {searchData.regularprice}</span></span>
                                           </div>
-                                          <Link to={`/list-data/${searchData._id}`}><div className="bg-slate-700 p-1 rounded-md text-center hover:scale-105 duration-300 transition-scale">
+                                          <Link to={`/list-data/${searchData._id}`}>
+                                            <div className="bg-slate-700 p-1 rounded-md text-center hover:scale-105 duration-300 transition-scale">
                                               <h1 className="text-md font-semibold text-slate-100">Check Details</h1>
-                                          </div></Link>
+                                          </div>
+                                          </Link>
                                       </div>
                                   </div>              
                 )): <div><h1>Data Not Found</h1></div>) }

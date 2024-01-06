@@ -1,5 +1,7 @@
 const ListingModel = require('../models/listing.model.js')
 const ErrorHandler = require('../utils/ErrorHandler.js')
+const CommentModel = require('../models/comment.model')
+const UserModel = require('../models/user.models.js')
 
 const CreateListing = async (req, res, next) => {
     try {
@@ -132,4 +134,27 @@ const getSearchData = async (req, res, next) => {
 };
 
 
-module.exports = { CreateListing, ListData, getCreatedList, deleteData, getEditData, getUpdateData, getSearchData }
+const messageUpdate = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const presentCurrentId = req.params.id;
+        const currentUserId = await UserModel.findById(presentCurrentId)
+        if (!currentUserId) return next(ErrorHandler(404, 'User Not Found'))
+        if (userId !== presentCurrentId.toString()) {
+            return next(ErrorHandler(404, 'You can only send messages for your own account.'));
+        }
+
+        const comment = await CommentModel.create({ ...req.body, userRef: presentCurrentId.toString() });
+
+        if (!comment) {
+            return next(ErrorHandler(404, 'Something went wrong while creating the comment.'));
+        }
+
+        res.status(200).json('Successfully sent the message.');
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+module.exports = { CreateListing, ListData, getCreatedList, deleteData, getEditData, getUpdateData, getSearchData, messageUpdate }

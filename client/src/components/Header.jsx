@@ -37,7 +37,7 @@ const Header = ()=>{
     return(
         <>
         <div className='bg-blue-100 p-3 shadow-md flex items-center justify-between sm:pl-20 pr-5 top-0 w-full'>
-            <h1 className='text-xxl font-bold'>Siva <span className='text-slate-500 text-xxl font-bold'>Estate</span></h1>
+            <Link to={'/'}><h1 className='text-xxl font-bold'>Siva <span className='text-slate-500 text-xxl font-bold'>Estate</span></h1></Link>
             <div className='flex justify-center'>
             <form className='flex items-center bg-slate-100 p-2 rounded-md shadow-sm search_bar' onSubmit={searchFilter}>
                 <input type="search" placeholder='Search...' className='bg-slate-100 outline-none' value={searchData} onChange={(e)=>setSearchData(e.target.value)}/>

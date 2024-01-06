@@ -126,7 +126,7 @@ const imagesData = async() =>{
         const urlSearchQuery = urlParamsData.toString()
         const res = await fetch(`/listing/datas/search?${urlSearchQuery}`)
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
         setLatestData(data)
     } catch (error) {
         toast.error(error.message)
