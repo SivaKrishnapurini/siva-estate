@@ -1,3 +1,12 @@
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { useState } from "react";
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
+
 const carouselImages = [
 {
 id:1,
@@ -20,8 +29,153 @@ imgUrl:'https://watermark.lovepik.com/photo/40143/6442.jpg_wh1200.jpg',
 name:'real esate3'
 },
 ]
-const Carousel = ()=>{
-    return <h1>Carousel</h1>
+
+const Carousel = () => {
+const [latestData, setLatestData] = useState([])
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        centerMode: true,
+        centerPadding: "60px",
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    centerPadding: "60px",
+                },
+            },
+        ],
+    };
+
+    const products = [
+        {
+          id: 1,
+          name: 'Earthen Bottle',
+          href: '#',
+          price: '$48',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+          imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
+        },
+        {
+          id: 2,
+          name: 'Nomad Tumbler',
+          href: '#',
+          price: '$35',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+          imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
+        },
+        {
+          id: 3,
+          name: 'Focus Paper Refill',
+          href: '#',
+          price: '$89',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+          imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
+        },
+        {
+          id: 4,
+          name: 'Machined Mechanical Pencil',
+          href: '#',
+          price: '$35',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+          imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+        },
+        {
+          id: 4,
+          name: 'Machined Mechanical Pencil',
+          href: '#',
+          price: '$35',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+          imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+        },
+        {
+          id: 5,
+          name: 'Machined Mechanical Pencil',
+          href: '#',
+          price: '$35',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+          imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+        },
+        {
+          id: 6,
+          name: 'Machined Mechanical Pencil',
+          href: '#',
+          price: '$35',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+          imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+        },
+      ]
+
+
+useEffect(()=>{
+    imagesData()
+},[])
+
+const imagesData = async() =>{
+    try {
+        const urlParamsData = new URLSearchParams(window.location.search)
+        urlParamsData.set('housetype','all')
+        urlParamsData.set('sort', 'createdAt')
+        urlParamsData.set('order','desc')
+        const urlSearchQuery = urlParamsData.toString()
+        const res = await fetch(`/listing/datas/search?${urlSearchQuery}`)
+        const data = await res.json()
+        console.log(data)
+        setLatestData(data)
+    } catch (error) {
+        toast.error(error.message)
+    }
 }
 
-export default Carousel
+    return (
+        <div className="flex flex-col gap-3">
+        <div>
+            <Slider {...settings}>
+                {carouselImages &&
+                    carouselImages.length > 0 &&
+                    carouselImages.map((data) => {
+                        return (
+                            <div key={data.id} className="flex justify-center p-2 duration-300 transition-scale hover:scale-95">
+                                <img
+                                    src={data.imgUrl}
+                                    alt={`image ${data.id}`}
+                                    className="sm:h-[200px] lg:h-[300px] h-[200px] w-[700px] rounded-md"
+                                />
+                            </div>
+                        );
+                    })}
+            </Slider>
+            <ToastContainer />
+            </div>
+            <div className="bg-white rounded-md mt-5">
+                <div className="mx-auto max-w-2xl lg:max-w-7xl lg:px-8">
+                    <h2 className="text-2xl font-semibold text-center pt-2">Latest Estates</h2>
+
+                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 px-4 py-16">
+                    {latestData.map((product) => (
+                        <Link to={`/list-data/${product._id}`} key={product._id} className="group border border-slate-400 p-2 rounded-md">
+                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                            <img
+                            src={product.images[0]}
+                            alt={`${product._id}`}
+                            className="h-48 w-full object-cover object-center group-hover:opacity-75"
+                            />
+                        </div>
+                        <h3 className="mt-4 text-sm text-gray-700 h-[4.5rem] line-clamp-3">{product.name}</h3>
+                        <p className="mt-1 text-lg font-semibold text-gray-500"><span className="font-semibold text-slate-700">RS :</span> {product.regularprice}</p>
+                        </Link>
+                    ))}
+                    </div>
+                </div>
+                </div>
+        </div>
+    );
+};
+
+export default Carousel;
