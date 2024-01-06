@@ -29,7 +29,7 @@ app.listen(4000, () => {
 app.use('/auth/user', Router)
 app.use('/listing/datas', Listing)
 
-app.use(express.static(path.join(__dirname, '/client/dist')))
+app.use(express.static(path.join(__dirname, '/client')))
 // app.use(express.static(path.join(__dirname, '/client/dist')))
 
 app.get('*', (req, res) => {
