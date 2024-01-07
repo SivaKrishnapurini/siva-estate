@@ -78,7 +78,7 @@ const ListData = ()=>{
     // console.log(listingData)
 
     return (
-        <div>
+        <div className='overflow-hidden'>
             {loadingPage === true ?
              <div className='h-screen flex flex-col justify-center items-center'>
                 <ReactLoading type='spinningBubbles' color={'#ADD8E8'} height={150} width={150} />
@@ -90,7 +90,7 @@ const ListData = ()=>{
              {listingData && listingData.images && listingData.images.length > 0 && listingData.images.map((data, i) => {
                 return (
                     <div key={i} className='flex justify-center p-2'>
-                        <img src={data} alt={`image ${i}`} className='sm:h-[380px] h-190px] w-[560px] rounded-md border border-blue-500'/>
+                        <img src={data} alt={`image ${i}`} className='sm:h-[380px] h-[190px] w-[560px] rounded-md border border-blue-500'/>
                     </div>
                 )
             })}
@@ -99,15 +99,15 @@ const ListData = ()=>{
                 <div className='flex items-center gap-3'>
                     <MdOutlineRealEstateAgent className='h-[30px] text-blue-400'/>
                     <div className='flex gap-3 items-center'>
-                    <span className='font-bold text-md text-slate-800'>Name :</span>
-                    <h1 className='font-semibold text-sm text-slate-700 not-italic'>{listingData.name}</h1>
+                    <span className='font-bold text-md text-slate-800 whitespace-nowrap w-[60px]'>Name :</span>
+                    <h1 className='font-semibold text-sm text-slate-700 not-italic w-[250px] md:w-full'>{listingData.name}</h1>
                     </div>
                 </div>
                 <div className='flex items-center gap-3'>
                     <FaRegAddressCard className='h-[30px] text-blue-400'/>
                     <div className='flex gap-3 items-center'>
-                    <span className='font-bold text-md text-slate-800'>Address :</span>
-                    <h1 className='font-semibold text-sm text-blue-800 not-italic'>{listingData.address}</h1>
+                    <span className='font-bold text-md text-slate-800 whitespace-nowrap w-[60px]'>Address :</span>
+                    <h1 className='font-semibold text-sm text-blue-800 not-italic w-[250px] md:w-full'>{listingData.address}</h1>
                     </div>
                 </div>
                 <div className='flex items-center sm:gap-2 md:gap-3 flex-wrap'>
@@ -144,7 +144,7 @@ const ListData = ()=>{
                 <div className='mt-3'>
                     <h1 className='text-lg font-bold text-slate-800'>Description :</h1>
                     <div className='pt-1'>
-                        <span className='pl-4 text-sm font-semibold text-slate-700'> {listingData.description}</span>
+                        <span className='pl-4 text-sm font-semibold text-slate-700 w-[290px]'> {listingData.description}</span>
                     </div>
                 </div>
             </div>
