@@ -56,7 +56,7 @@ const Contact = () => {
         <p className="mt-2">Thank you for visiting the Siva Estate Project.</p>
       </header>
 
-      <main className="container mx-auto py-8 w-[500px] shadow-lg p-10 rounded-md bg-gray-200">
+      <main className="container mx-auto py-8 md:w-[500px] w-[350px] shadow-lg md:p-10 p-5 rounded-md bg-gray-200">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-slate-600">Contact Information</h2>
           <p className="mb-2"><strong className='text-slate-700'>Phone:</strong> -</p>

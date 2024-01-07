@@ -118,7 +118,7 @@ const SignUp = () =>{
     }
 
     return(
-        <div className="flex justify-center items-center flex-col">
+        <div className="flex justify-center items-center flex-col overflow-hidden">
             <div className="p-4 w-96 rounded-md shadow-md">
             <form className="flex flex-col gap-4" onSubmit={onFormSubmit}>
                 <div className="flex flex-col gap-1">

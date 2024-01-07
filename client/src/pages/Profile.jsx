@@ -196,7 +196,7 @@ const onHandleDelete = async(deleteId)=>{
 
     return (
         <>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center overflow-hidden">
             <form className="p-4 flex flex-col gap-4 w-96 rounded-md" onSubmit={onHandleSumbit}>
                 <h1 className="text-lg font-bold text-slate-600 text-center uppercase">Profile</h1>
                 <div className="flex justify-center">

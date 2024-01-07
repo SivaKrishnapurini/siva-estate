@@ -60,7 +60,7 @@ const Login = () =>{
     }
 
     return(
-        <div className="flex justify-center items-center flex-col">
+        <div className="flex justify-center items-center flex-col overflow-hidden">
             <div className="p-4 w-96 rounded-md">
             <form className="flex flex-col gap-4" onSubmit={onHandleSumbit}>
                 <div className="flex p-1 items-center justify-center flex-col gap-1">

@@ -7,3 +7,8 @@
 body{
     background-color: #ebf7f4;
 }
+body,
+html {
+  margin: 0;
+  padding: 0;
+}

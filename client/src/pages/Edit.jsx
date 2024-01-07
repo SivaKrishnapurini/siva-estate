@@ -150,11 +150,11 @@ const Edit = () =>{
     console.log(gettingFormData)
 
     return (
-        <div className="py-10 px-10">
+        <div className="px-10 py-10 md:px-10 lg:px-20 xl:px-32">
             <h1 className="text-center font-semibold text-lg">Create a Listing</h1>
             <form className="grid lg:grid-cols-2 grid-cols-1 mt-10" onSubmit={onHandleUpdate}>
                 <div className="flex justify-center">
-                    <div className="flex flex-col gap-4 w-[430px]">
+                    <div className="flex flex-col gap-4 md:w-[430px] w-[300px]">
                         <input type="text" id="name" name="name" placeholder="Name" className="p-2 rounded-md border border-2 border-blue-300 outline-blue-500" value={gettingFormData.name} onChange={onHandleInput}/>
                         <textarea type="text" id="description" name="description" placeholder="Description" rows={3} cols={50} className="p-2 rounded-md border border-2 border-blue-300 outline-blue-500 text-semibold text-slate-600"  value={gettingFormData.description} onChange={onHandleInput}/>
                         <input type="text" id="address" name="address" placeholder="address" className="p-2 rounded-md border border-2 border-blue-300 outline-blue-500" value={gettingFormData.address} onChange={onHandleInput}/> 
@@ -198,7 +198,7 @@ const Edit = () =>{
                     </div>
                 </div>
                 <div className="flex justify-center mt-10 lg:mt-0">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 sm:mt-0 md:w-[430px] w-[300px] sm:w-[350px]">
                     <div>
                         <h1 className="text-md font-semibold">Images : <span className="text-slate-700 text-sm font-semibold">The first image will be the cover (max-6)</span></h1>
                     </div>
@@ -216,7 +216,7 @@ const Edit = () =>{
                     </div>
 
                     <div>
-                        <button type="sumbmit" className="bg-gray-500 hover:opacity-90 text-center w-[410px] p-2 rounded-md text-gray-100 font-semibold">Update List</button>
+                        <button type="sumbmit" className="bg-gray-500 hover:opacity-90 text-center w-[410px] w-[300px] sm:[350px] p-2 rounded-md text-gray-100 font-semibold">Update List</button>
                     </div>
                 </div>
                 </div>

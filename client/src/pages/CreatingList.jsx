@@ -180,15 +180,15 @@ const CreatingList = () =>{
         }
         
     return (
-        <div className="px-10 py-10">
+        <div className="px-10 py-10 md:px-10 lg:px-20 xl:px-32">
             <h1 className="text-center font-semibold text-lg">Create a Listing</h1>
-            <form className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 grid-col-1 mt-10" onSubmit={onHandleCreate}>
+            <form className="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2" onSubmit={onHandleCreate}>
                 <div className="flex justify-center">
-                    <div className="flex flex-col gap-4 w-[430px]">
+                    <div className="flex flex-col gap-4 md:w-[430px] w-[300px]">
                     <input type="text" name="name" id="name" className="p-2 rounded-md border border-2 border-blue-200 outline-blue-400" placeholder="Name" onChange={onHandleInput}/>
                     <textarea placeholder="Description" id="description" className="rounded-md p-2 border border-2 border-blue-200 outline-blue-400" cols={50} rows={3} onChange={onHandleInput}/>
                     <input type="text" placeholder="address" className="p-2 rounded-md border border-2 border-blue-200 outline-blue-400" id="address" onChange={onHandleInput}/>
-                    <div className="flex gap-6">
+                    <div className="flex gap-6 flex-wrap">
                     <div className="flex gap-1 items-center">
                         <input type="checkbox" className="h-5 w-4" id="sell" onChange={onHandleInput} checked={formData.housetype === "sell"}/>
                         <label className="font-semibold text-sm" htmlFor="sell">Sell</label>
@@ -203,7 +203,7 @@ const CreatingList = () =>{
                     </div>
                     <div className="flex gap-1 items-center">
                         <input type="checkbox" className="h-5 w-4" id="parkingspot"  onChange={onHandleInput}/>
-                        <label className="font-semibold text-sm whitespace-no-wrap" htmlFor="parkingspot">Parking Spot</label>
+                        <label className="font-semibold text-sm whitespace-nowrap" htmlFor="parkingspot">Parking Spot</label>
                     </div>
                     <div className="flex gap-1 items-center">
                         <input type="checkbox" className="h-5 w-4" id="furnished" onChange={onHandleInput}/>
@@ -230,7 +230,7 @@ const CreatingList = () =>{
                     </div>
                 </div>
                 <div className="flex justify-center">
-                <div className="mt-10 sm:mt-0 w-[430px]">
+                <div className="mt-10 sm:mt-0 md:w-[430px] w-[300px] sm:w-[350px]">
                 <div className="mb-3">
                     <span className="font-semibold text-md text-slate-900">Images : <span className="text-gray-600 text-sm">The first image will be the cover (max-6)</span></span>
                 </div>
