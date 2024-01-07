@@ -159,7 +159,7 @@ const loadMoreData = async() =>{
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
-                            <label className="font-semibold text-md">Amemities:</label>
+                            <label className="font-semibold text-md">Availble:</label>
                             <div className="flex items-center gap-1">
                                 <input type="checkbox" id="parking" className="h-4 w-4 cursor-pointer" checked={searchDatas.parking} onChange={onHandleSearch}/>
                                 <label>Parking</label>
