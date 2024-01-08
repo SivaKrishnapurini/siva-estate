@@ -14,7 +14,10 @@ const Profile = () =>{
     const [fileProfile, setFileProfile] = useState(undefined)
     const [uploadProgress,setUploadProgress] =useState(0)
     const {currentUser,updateLoading} = useSelector((state)=>state.user)
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        name:currentUser.name,
+        email: currentUser.email
+    })
     const [createdListData, setCreatedListData] = useState({})
     const [showList, setShowList] = useState(false)
     const [deleteLoading, setDeleteLoading] = useState(false)
@@ -206,11 +209,11 @@ const onHandleDelete = async(deleteId)=>{
               {uploadProgress > 0 && uploadProgress < 100  ? <span className="font-semibold text-center text-lg text-gray-600">Image Uploading <span className="text-slate-500">{uploadProgress}</span></span> : uploadProgress === 100 && <span className="text-green-700 text-center font-semibold">Image Upload successfully</span> }
                 <div className="flex flex-col gap-1">
                 <label className="text-xxl font-semibold" htmlFor="name">Name</label>
-                <input type="text" placeholder="Name" id="name" value={currentUser.name||formData.name} className="p-2 rounded-md outline-slate-400 border border-slate-400 border-1 font-semibold"  onChange={onHandleInputs} />
+                <input type="text" placeholder="Name" id="name" value={formData.name} className="p-2 rounded-md outline-slate-400 border border-slate-400 border-1 font-semibold"  onChange={onHandleInputs} />
                 </div>
                 <div className="flex flex-col gap-1">
                     <label className="text-xxl font-semibold" htmlFor="email">Email</label>
-                    <input type="email" placeholder="email" id="email" value={currentUser.email||formData.email} className="p-2 rounded-md outline-slate-400 border border-slate-400 border-1 font-semibold"  onChange={onHandleInputs} />
+                    <input type="email" placeholder="email" id="email" value={formData.email} className="p-2 rounded-md outline-slate-400 border border-slate-400 border-1 font-semibold"  onChange={onHandleInputs} />
                 </div>
                 <div className="flex flex-col gap-1">
                     <label className="text-xxl font-semibold" htmlFor="password">Change Password</label>

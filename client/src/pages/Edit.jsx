@@ -119,6 +119,12 @@ const Edit = () =>{
             [e.target.id] : parseInt(e.target.value)
         })
     }
+    if(e.target.id === "name" || e.target.id === "description" || e.target.id === "address"){
+        setGettingFormData({
+            ...gettingFormData,
+            [e.target.id] : e.target.value
+        })
+    }
     }
 
     const onHandleUpdate = async (e)=>{
@@ -147,8 +153,6 @@ const Edit = () =>{
         setGettingFormData(responseEditData)
 
     }
-    console.log(gettingFormData)
-
     return (
         <div className="px-10 py-10 md:px-10 lg:px-20 xl:px-32">
             <h1 className="text-center font-semibold text-lg">Create a Listing</h1>
