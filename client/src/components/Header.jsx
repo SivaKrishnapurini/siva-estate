@@ -37,12 +37,12 @@ const Header = ()=>{
     return(
         <>
         <div className='bg-blue-100 p-3 shadow-md flex items-center justify-between sm:pl-20 pr-5 top-0 w-full'>
-            <Link to={'/'}><h1 className='text-xxl font-bold'>Siva <span className='text-slate-500 text-xxl font-bold'>Estate</span></h1></Link>
+            <Link to={'/'}><h1 className='text-xxl font-bold whitespace-nowrap'>Siva <span className='text-slate-500 text-xxl font-bold'>Estate</span></h1></Link>
             <div className='flex justify-center'>
-            <form className='flex items-center bg-slate-100 p-2 rounded-md shadow-sm search_bar' onSubmit={searchFilter}>
-                <input type="search" placeholder='Search...' className='bg-slate-100 outline-none' value={searchData} onChange={(e)=>setSearchData(e.target.value)}/>
+            <form className='flex items-center bg-slate-100 p-2 rounded-md shadow-sm search_bar w-[170px] md:w-[400px]' onSubmit={searchFilter}>
+                <input type="search" placeholder='Search...' className='bg-slate-100 outline-none w-[140px] md:w-[360px]' value={searchData} onChange={(e)=>setSearchData(e.target.value)}/>
                 <button type="submit">
-                    <FaSearch className='text-slate-500 pl-1 text-xxl'/>
+                    <FaSearch className='text-slate-500 pl-1 text-xl'/>
                 </button>
             </form>
             </div>
